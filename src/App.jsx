@@ -55,7 +55,7 @@ export default function App() {
   const [input, setInput] = useState();
   const [state, dispatch] = useReducer(notesReducer, initialNoteState, () => {
     const data = localStorage.getItem("state");
-    return data ? JSON.parse(data) : state;
+    return data ? JSON.parse(data) : [];
   });
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export default function App() {
     <div className="app" onDragOver={dragOver}>
       <h1>
         {" "}
-        Sticky Note (<span>{state.notes.length}</span>){" "}
+        Sticky Note (<span>{state ? state.notes.length : "0"}</span>){" "}
         {state.notes.length === 0 ? null : (
           <span className="time">
             {" "}

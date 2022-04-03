@@ -2,29 +2,27 @@ import React, { useEffect, useReducer, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
 
-
 // time
-const dateFormate = new Intl.DateTimeFormat('en-US' , {
-  hour12: true ,
-  hour: "numeric" ,
-  minute: 'numeric' ,
+const dateFormate = new Intl.DateTimeFormat("en-US", {
+  hour12: true,
+  hour: "numeric",
+  minute: "numeric",
   day: "2-digit",
-  month : 'short',
-  year : "2-digit",
-  weekday : 'short'
-})
+  month: "short",
+  year: "2-digit",
+  weekday: "short",
+});
 const initialNoteState = {
   lastUpDateTime: null,
   totalNotes: 0,
   notes: [],
 };
-const date = new Date()
-console.log(date);
+const date = new Date();
 const notesReducer = (state, action) => {
   switch (action.type) {
     case "ADD_NOTE": {
       const newState = {
-        lastUpDateTime: dateFormate.format(date) ,
+        lastUpDateTime: dateFormate.format(date),
         totalNotes: state.notes.length + 1,
         notes: [...state.notes, action.item],
       };
@@ -53,10 +51,7 @@ const dragOver = (e) => {
 
 export default function App() {
   const [input, setInput] = useState();
-  const [state, dispatch] = useReducer(notesReducer, initialNoteState, () => {
-    const data = localStorage.getItem("state");
-    return data ? JSON.parse(data) : [];
-  });
+  const [state, dispatch] = useReducer(notesReducer, initialNoteState);
 
   useEffect(() => {
     localStorage.setItem("state", JSON.stringify(state));
@@ -85,8 +80,8 @@ export default function App() {
     <div className="app" onDragOver={dragOver}>
       <h1>
         {" "}
-        Sticky Note (<span>{state ? state.notes.length : "0"}</span>){" "}
-        {state.notes.length === 0 ? null : (
+        Sticky Note (<span>{state.notes.length}</span>){" "}
+        {state && (
           <span className="time">
             {" "}
             last update time : {state.lastUpDateTime}{" "}

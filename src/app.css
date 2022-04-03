@@ -11,7 +11,7 @@ body {
 
 .app {
   padding: 40px;
-  height: 87vh;
+  height: 100vh;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("../asset/img/wall.jpg");
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../asset/img/wall.jpg");
   background-size: cover;
@@ -79,7 +79,7 @@ h1 .time {
   left: 350px;
   height: 200px;
   width: 200px;
-  padding: 30px;
+  padding: 50px  30px 30px;
 }
 
 .sticky-note .text {

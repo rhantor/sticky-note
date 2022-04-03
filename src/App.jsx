@@ -54,9 +54,7 @@ export default function App() {
   const [state, dispatch] = useReducer(
     notesReducer,
     initialNoteState,
-    (initial) => {
-      JSON.parse(localStorage.getItem("state") || initial);
-    }
+    (initial) => JSON.parse(localStorage.getItem("state")) || initial
   );
 
   useEffect(() => {
@@ -129,7 +127,7 @@ export default function App() {
               <p className="text">{note.text} </p>
             </div>
           ))
-        : null}
+        : "nothing"}
     </div>
   );
 }

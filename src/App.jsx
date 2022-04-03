@@ -51,7 +51,13 @@ const dragOver = (e) => {
 
 export default function App() {
   const [input, setInput] = useState();
-  const [state, dispatch] = useReducer(notesReducer, initialNoteState);
+  const [state, dispatch] = useReducer(
+    notesReducer,
+    initialNoteState,
+    (initial) => {
+      JSON.parse(localStorage.getItem("state") || initial);
+    }
+  );
 
   useEffect(() => {
     localStorage.setItem("state", JSON.stringify(state));
@@ -79,14 +85,13 @@ export default function App() {
   return (
     <div className="app" onDragOver={dragOver}>
       <h1>
-        {" "}
-        Sticky Note (<span>{state.notes.length}</span>){" "}
+        
+        Sticky Note (<span>{state.notes.length}</span>)
         {state && (
           <span className="time">
-            {" "}
-            last update time : {state.lastUpDateTime}{" "}
+            last update time : {state.lastUpDateTime}
           </span>
-        )}{" "}
+        )}
       </h1>
 
       <form onSubmit={submitFunc} className="noteForm">

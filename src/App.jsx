@@ -83,7 +83,6 @@ export default function App() {
   return (
     <div className="app" onDragOver={dragOver}>
       <h1>
-        
         Sticky Note (<span>{state.notes.length}</span>)
         {state && (
           <span className="time">
@@ -102,7 +101,7 @@ export default function App() {
       </form>
 
       {state
-        ? state.notes.map((note) => (
+        ? state.notes.map((note, i) => (
             <div
               className="sticky-note"
               key={note.id}
@@ -124,6 +123,31 @@ export default function App() {
                 <DeleteIcon fontSize="small" />
               </IconButton>
 
+              <p className="text">{note.text} </p>
+            </div>
+          ))
+        : "nothing"}
+
+      {state
+        ? state.notes.map((note , i) => (
+            <div
+              className="sticky__note-sm"
+              key={`key ${note.id + i}`}
+              style={{ transform: `rotate(${note.rotate}deg)` }}
+            >
+              <IconButton
+                aria-label="cancel"
+                size="small"
+                className="dlt-icon"
+                onClick={() => {
+                  dispatch({
+                    type: "DELETE_NOTE",
+                    item: note,
+                  });
+                }}
+              >
+                <DeleteIcon fontSize="small" />
+              </IconButton>
               <p className="text">{note.text} </p>
             </div>
           ))

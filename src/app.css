@@ -1,21 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 * {
   margin: 0;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 }
 
+@media screen and (max-width: 992px) {
+  body {
+    overflow: auto;
+    overflow-x: hidden;
+  }
+}
+
 .app {
-  padding: 40px;
-  height: 100vh;
+  padding: 0 40px;
+  min-height: 100vh;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("../asset/img/wall.jpg");
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../asset/img/wall.jpg");
   background-size: cover;
+  background-position: center;
   overflow: hidden;
+}
+
+@media screen and (max-width: 992px) {
+  .app {
+    overflow: auto;
+    overflow-x: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
 }
 
 h1 {
@@ -79,7 +109,7 @@ h1 .time {
   left: 350px;
   height: 200px;
   width: 200px;
-  padding: 50px  30px 30px;
+  padding: 50px 30px 30px;
 }
 
 .sticky-note .text {
@@ -87,6 +117,12 @@ h1 .time {
   width: 100%;
   overflow: auto;
   overflow-x: visible;
+}
+
+@media screen and (max-width: 992px) {
+  .sticky-note {
+    display: none;
+  }
 }
 
 .dlt-icon {
@@ -101,5 +137,29 @@ h1 .time {
   transition: 0.3s ease-in-out;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+
+.sticky__note-sm {
+  cursor: pointer;
+  background-image: url("../asset/img/postWall.png");
+  background-size: cover;
+  top: 150px;
+  left: 350px;
+  height: 200px;
+  width: 200px;
+  padding: 50px 30px 30px;
+}
+
+.sticky__note-sm .text {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  overflow-x: visible;
+}
+
+@media screen and (min-width: 992px) {
+  .sticky__note-sm {
+    display: none;
+  }
 }
 /*# sourceMappingURL=app.css.map */
